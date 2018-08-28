@@ -1007,7 +1007,7 @@ layer {
   bottom: "cls_Attractive"
   bottom: "Attractive_label"
   top: "Attractive_asoftmax"
-  top: "lambda"
+  top: "Attractive_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1068,7 +1068,7 @@ layer {
   bottom: "cls_Bags_Under_Eyes"
   bottom: "Bags_Under_Eyes_label"
   top: "Bags_Under_Eyes_asoftmax"
-  top: "lambda"
+  top: "Bags_Under_Eyes_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1128,7 +1128,7 @@ layer {
   bottom: "cls_Bald"
   bottom: "Bald_label"
   top: "Bald_asoftmax"
-  top: "lambda"
+  top: "Bald_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1188,7 +1188,7 @@ layer {
   bottom: "cls_Bangs"
   bottom: "Bangs_label"
   top: "Bangs_asoftmax"
-  top: "lambda"
+  top: "Bangs_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1248,7 +1248,7 @@ layer {
   bottom: "cls_Big_Lips"
   bottom: "Big_Lips_label"
   top: "Big_Lips_asoftmax"
-  top: "lambda"
+  top: "Big_Lips_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1309,7 +1309,7 @@ layer {
   bottom: "cls_Big_Nose"
   bottom: "Big_Nose_label"
   top: "Big_Nose_asoftmax"
-  top: "lambda"
+  top: "Big_Nose_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1369,7 +1369,7 @@ layer {
   bottom: "cls_Black_Hair"
   bottom: "Black_Hair_label"
   top: "Black_Hair_asoftmax"
-  top: "lambda"
+  top: "Black_Hair_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1429,7 +1429,7 @@ layer {
   bottom: "cls_Blond_Hair"
   bottom: "Blond_Hair_label"
   top: "Blond_Hair_asoftmax"
-  top: "lambda"
+  top: "Blond_Hair_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1489,7 +1489,7 @@ layer {
   bottom: "cls_Blurry"
   bottom: "Blurry_label"
   top: "Blurry_asoftmax"
-  top: "lambda"
+  top: "Blurry_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1551,7 +1551,7 @@ layer {
   bottom: "cls_Brown_Hair"
   bottom: "Brown_Hair_label"
   top: "Brown_Hair_asoftmax"
-  top: "lambda"
+  top: "Brown_Hair_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1612,7 +1612,7 @@ layer {
   bottom: "cls_Bushy_Eyebrows"
   bottom: "Bushy_Eyebrows_label"
   top: "Bushy_Eyebrows_asoftmax"
-  top: "lambda"
+  top: "Bushy_Eyebrows_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1674,7 +1674,7 @@ layer {
   bottom: "cls_Chubby"
   bottom: "Chubby_label"
   top: "Chubby_asoftmax"
-  top: "lambda"
+  top: "Chubby_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1734,7 +1734,7 @@ layer {
   bottom: "cls_Double_Chin"
   bottom: "Double_Chin_label"
   top: "Double_Chin_asoftmax"
-  top: "lambda"
+  top: "Double_Chin_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1794,7 +1794,7 @@ layer {
   bottom: "cls_Eyeglasses"
   bottom: "Eyeglasses_label"
   top: "Eyeglasses_asoftmax"
-  top: "lambda"
+  top: "Eyeglasses_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1854,7 +1854,7 @@ layer {
   bottom: "cls_Goatee"
   bottom: "Goatee_label"
   top: "Goatee_asoftmax"
-  top: "lambda"
+  top: "Goatee_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1914,7 +1914,7 @@ layer {
   bottom: "cls_Gray_Hair"
   bottom: "Gray_Hair_label"
   top: "Gray_Hair_asoftmax"
-  top: "lambda"
+  top: "Gray_Hair_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1974,7 +1974,7 @@ layer {
   bottom: "cls_Heavy_Makeup"
   bottom: "Heavy_Makeup_label"
   top: "Heavy_Makeup_asoftmax"
-  top: "lambda"
+  top: "Heavy_Makeup_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2034,7 +2034,7 @@ layer {
   bottom: "cls_High_Cheekbones"
   bottom: "High_Cheekbones_label"
   top: "High_Cheekbones_asoftmax"
-  top: "lambda"
+  top: "High_Cheekbones_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2094,7 +2094,7 @@ layer {
   bottom: "cls_Male"
   bottom: "Male_label"
   top: "Male_asoftmax"
-  top: "lambda"
+  top: "Male_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2154,7 +2154,7 @@ layer {
   bottom: "cls_Mouth_Slightly_Open"
   bottom: "Mouth_Slightly_Open_label"
   top: "Mouth_Slightly_Open_asoftmax"
-  top: "lambda"
+  top: "Mouth_Slightly_Open_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2214,7 +2214,7 @@ layer {
   bottom: "cls_Mustache"
   bottom: "Mustache_label"
   top: "Mustache_asoftmax"
-  top: "lambda"
+  top: "Mustache_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2274,7 +2274,7 @@ layer {
   bottom: "cls_Narrow_Eyes"
   bottom: "Narrow_Eyes_label"
   top: "Narrow_Eyes_asoftmax"
-  top: "lambda"
+  top: "Narrow_Eyes_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2334,7 +2334,7 @@ layer {
   bottom: "cls_No_Beard"
   bottom: "No_Beard_label"
   top: "No_Beard_asoftmax"
-  top: "lambda"
+  top: "No_Beard_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2395,7 +2395,7 @@ layer {
   bottom: "cls_Oval_Face"
   bottom: "Oval_Face_label"
   top: "Oval_Face_asoftmax"
-  top: "lambda"
+  top: "Oval_Face_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2455,7 +2455,7 @@ layer {
   bottom: "cls_Pale_Skin"
   bottom: "Pale_Skin_label"
   top: "Pale_Skin_asoftmax"
-  top: "lambda"
+  top: "Pale_Skin_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2515,7 +2515,7 @@ layer {
   bottom: "cls_Pointy_Nose"
   bottom: "Pointy_Nose_label"
   top: "Pointy_Nose_asoftmax"
-  top: "lambda"
+  top: "Pointy_Nose_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2575,7 +2575,7 @@ layer {
   bottom: "cls_Receding_Hairline"
   bottom: "Receding_Hairline_label"
   top: "Receding_Hairline_asoftmax"
-  top: "lambda"
+  top: "Receding_Hairline_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2636,7 +2636,7 @@ layer {
   bottom: "cls_Rosy_Cheeks"
   bottom: "Rosy_Cheeks_label"
   top: "Rosy_Cheeks_asoftmax"
-  top: "lambda"
+  top: "Rosy_Cheeks_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2696,7 +2696,7 @@ layer {
   bottom: "cls_Sideburns"
   bottom: "Sideburns_label"
   top: "Sideburns_asoftmax"
-  top: "lambda"
+  top: "Sideburns_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2756,7 +2756,7 @@ layer {
   bottom: "cls_Smiling"
   bottom: "Smiling_label"
   top: "Smiling_asoftmax"
-  top: "lambda"
+  top: "Smiling_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2816,7 +2816,7 @@ layer {
   bottom: "cls_Straight_Hair"
   bottom: "Straight_Hair_label"
   top: "Straight_Hair_asoftmax"
-  top: "lambda"
+  top: "Straight_Hair_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2877,7 +2877,7 @@ layer {
   bottom: "cls_Wavy_Hair"
   bottom: "Wavy_Hair_label"
   top: "Wavy_Hair_asoftmax"
-  top: "lambda"
+  top: "Wavy_Hair_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2938,7 +2938,7 @@ layer {
   bottom: "cls_Wearing_Earrings"
   bottom: "Wearing_Earrings_label"
   top: "Wearing_Earrings_asoftmax"
-  top: "lambda"
+  top: "Wearing_Earrings_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2998,7 +2998,7 @@ layer {
   bottom: "cls_Wearing_Hat"
   bottom: "Wearing_Hat_label"
   top: "Wearing_Hat_asoftmax"
-  top: "lambda"
+  top: "Wearing_Hat_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -3060,7 +3060,7 @@ layer {
   bottom: "cls_Wearing_Lipstick"
   bottom: "Wearing_Lipstick_label"
   top: "Wearing_Lipstick_asoftmax"
-  top: "lambda"
+  top: "Wearing_Lipstick_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -3121,7 +3121,7 @@ layer {
   bottom: "cls_Wearing_Necklace"
   bottom: "Wearing_Necklace_label"
   top: "Wearing_Necklace_asoftmax"
-  top: "lambda"
+  top: "Wearing_Necklace_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -3182,7 +3182,7 @@ layer {
   bottom: "cls_Wearing_Necktie"
   bottom: "Wearing_Necktie_label"
   top: "Wearing_Necktie_asoftmax"
-  top: "lambda"
+  top: "Wearing_Necktie_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -3243,7 +3243,7 @@ layer {
   bottom: "cls_Young"
   bottom: "Young_label"
   top: "Young_asoftmax"
-  top: "lambda"
+  top: "Young_lambda"
   param {
     lr_mult: 1
     decay_mult: 1
