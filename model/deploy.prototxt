@@ -1,0 +1,2126 @@
+input: "data"
+input_dim: 1
+input_dim: 3
+input_dim: 200
+input_dim: 150
+#===========================
+layer {
+  name: "conv1_1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1_1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 64
+    kernel_size: 3
+    stride: 2
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu1_1"
+  type: "PReLU"
+  bottom: "conv1_1"
+  top: "conv1_1"
+}
+layer {
+  name: "conv1_2"
+  type: "Convolution"
+  bottom: "conv1_1"
+  top: "conv1_2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 64
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu1_2"
+  type: "PReLU"
+  bottom: "conv1_2"
+  top: "conv1_2"
+}
+layer {
+  name: "conv1_3"
+  type: "Convolution"
+  bottom: "conv1_2"
+  top: "conv1_3"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 64
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu1_3"
+  type: "PReLU"
+  bottom: "conv1_3"
+  top: "conv1_3"
+}
+layer {
+  name: "res1_3"
+  type: "Eltwise"
+  bottom: "conv1_1"
+  bottom: "conv1_3"
+  top: "res1_3"
+  eltwise_param { 
+    operation: 1
+  }
+}
+layer {
+  name: "conv2_1"
+  type: "Convolution"
+  bottom: "res1_3"
+  top: "conv2_1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    stride: 2
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu2_1"
+  type: "PReLU"
+  bottom: "conv2_1"
+  top: "conv2_1"
+}
+layer {
+  name: "conv2_2"
+  type: "Convolution"
+  bottom: "conv2_1"
+  top: "conv2_2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu2_2"
+  type: "PReLU"
+  bottom: "conv2_2"
+  top: "conv2_2"
+}
+layer {
+  name: "conv2_3"
+  type: "Convolution"
+  bottom: "conv2_2"
+  top: "conv2_3"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu2_3"
+  type: "PReLU"
+  bottom: "conv2_3"
+  top: "conv2_3"
+}
+layer {
+  name: "res2_3"
+  type: "Eltwise"
+  bottom: "conv2_1"
+  bottom: "conv2_3"
+  top: "res2_3"
+  eltwise_param { 
+    operation: 1
+  }
+}
+layer {
+  name: "conv2_4"
+  type: "Convolution"
+  bottom: "res2_3"
+  top: "conv2_4"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu2_4"
+  type: "PReLU"
+  bottom: "conv2_4"
+  top: "conv2_4"
+}
+layer {
+  name: "conv2_5"
+  type: "Convolution"
+  bottom: "conv2_4"
+  top: "conv2_5"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu2_5"
+  type: "PReLU"
+  bottom: "conv2_5"
+  top: "conv2_5"
+}
+layer {
+  name: "res2_5"
+  type: "Eltwise"
+  bottom: "res2_3"
+  bottom: "conv2_5"
+  top: "res2_5"
+  eltwise_param { 
+    operation: 1
+  }
+}
+layer {
+  name: "conv3_1"
+  type: "Convolution"
+  bottom: "res2_5"
+  top: "conv3_1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    kernel_size: 3
+    stride: 2
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu3_1"
+  type: "PReLU"
+  bottom: "conv3_1"
+  top: "conv3_1"
+}
+layer {
+  name: "conv3_2"
+  type: "Convolution"
+  bottom: "conv3_1"
+  top: "conv3_2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu3_2"
+  type: "PReLU"
+  bottom: "conv3_2"
+  top: "conv3_2"
+}
+layer {
+  name: "conv3_3"
+  type: "Convolution"
+  bottom: "conv3_2"
+  top: "conv3_3"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu3_3"
+  type: "PReLU"
+  bottom: "conv3_3"
+  top: "conv3_3"
+}
+layer {
+  name: "res3_3"
+  type: "Eltwise"
+  bottom: "conv3_1"
+  bottom: "conv3_3"
+  top: "res3_3"
+  eltwise_param { 
+    operation: 1
+  }
+}
+layer {
+  name: "conv3_4"
+  type: "Convolution"
+  bottom: "res3_3"
+  top: "conv3_4"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu3_4"
+  type: "PReLU"
+  bottom: "conv3_4"
+  top: "conv3_4"
+}
+layer {
+  name: "conv3_5"
+  type: "Convolution"
+  bottom: "conv3_4"
+  top: "conv3_5"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu3_5"
+  type: "PReLU"
+  bottom: "conv3_5"
+  top: "conv3_5"
+}
+layer {
+  name: "res3_5"
+  type: "Eltwise"
+  bottom: "res3_3"
+  bottom: "conv3_5"
+  top: "res3_5"
+  eltwise_param { 
+    operation: 1
+  }
+}
+layer {
+  name: "conv3_6"
+  type: "Convolution"
+  bottom: "res3_5"
+  top: "conv3_6"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu3_6"
+  type: "PReLU"
+  bottom: "conv3_6"
+  top: "conv3_6"
+}
+layer {
+  name: "conv3_7"
+  type: "Convolution"
+  bottom: "conv3_6"
+  top: "conv3_7"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu3_7"
+  type: "PReLU"
+  bottom: "conv3_7"
+  top: "conv3_7"
+}
+layer {
+  name: "res3_7"
+  type: "Eltwise"
+  bottom: "res3_5"
+  bottom: "conv3_7"
+  top: "res3_7"
+  eltwise_param { 
+    operation: 1
+  }
+}
+layer {
+  name: "conv3_8"
+  type: "Convolution"
+  bottom: "res3_7"
+  top: "conv3_8"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu3_8"
+  type: "PReLU"
+  bottom: "conv3_8"
+  top: "conv3_8"
+}
+layer {
+  name: "conv3_9"
+  type: "Convolution"
+  bottom: "conv3_8"
+  top: "conv3_9"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu3_9"
+  type: "PReLU"
+  bottom: "conv3_9"
+  top: "conv3_9"
+}
+layer {
+  name: "res3_9"
+  type: "Eltwise"
+  bottom: "res3_7"
+  bottom: "conv3_9"
+  top: "res3_9"
+  eltwise_param { 
+    operation: 1
+  }
+}
+layer {
+  name: "conv4_1"
+  type: "Convolution"
+  bottom: "res3_9"
+  top: "conv4_1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 512
+    kernel_size: 3
+    stride: 2
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu4_1"
+  type: "PReLU"
+  bottom: "conv4_1"
+  top: "conv4_1"
+}
+layer {
+  name: "conv4_2"
+  type: "Convolution"
+  bottom: "conv4_1"
+  top: "conv4_2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 512
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu4_2"
+  type: "PReLU"
+  bottom: "conv4_2"
+  top: "conv4_2"
+}
+layer {
+  name: "conv4_3"
+  type: "Convolution"
+  bottom: "conv4_2"
+  top: "conv4_3"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 512
+    kernel_size: 3
+    stride: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "relu4_3"
+  type: "PReLU"
+  bottom: "conv4_3"
+  top: "conv4_3"
+}
+layer {
+  name: "res4_3"
+  type: "Eltwise"
+  bottom: "conv4_1"
+  bottom: "conv4_3"
+  top: "res4_3"
+  eltwise_param { 
+    operation: 1
+  }
+}
+# ================================
+layer {
+  name: "fc-512"
+  type: "InnerProduct"
+  bottom: "res4_3"
+  top: "fc-512"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 512
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+#=================================
+#layer
+#{
+#    name: "dropout"
+#    type: "Dropout"
+#    bottom: "fc-512"
+#    top: "fc-512"
+#    dropout_param {
+#        dropout_ratio: 0.5
+#    }
+#}
+#=================================
+
+#========5_o_Clock_Shadow=======
+layer
+{
+  name: "cls_5_o_Clock_Shadow"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_5_o_Clock_Shadow"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_5_o_Clock_Shadow"
+	top: "prob_5_o_Clock_Shadow"
+	name: "prob_5_o_Clock_Shadow"
+	type: "Softmax"
+}
+# ==========Arched_Eyebrows ===============
+layer
+{
+  name: "cls_Arched_Eyebrows"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Arched_Eyebrows"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Arched_Eyebrows"
+	top: "prob_Arched_Eyebrows"
+	name: "prob_Arched_Eyebrows"
+	type: "Softmax"
+}
+#  =========Attractive ========
+layer
+{
+  name: "cls_Attractive"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Attractive"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Attractive"
+	top: "prob_Attractive"
+	name: "prob_Attractive"
+	type: "Softmax"
+}
+#========= Bags_Under_Eyes
+layer
+{
+  name: "cls_Bags_Under_Eyes"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Bags_Under_Eyes"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Bags_Under_Eyes"
+	top: "prob_Bags_Under_Eyes"
+	name: "prob_Bags_Under_Eyes"
+	type: "Softmax"
+}
+#=========cls_Bald  ============
+layer
+{
+  name: "cls_Bald"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Bald"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Bald"
+	top: "prob_Bald"
+	name: "prob_Bald"
+	type: "Softmax"
+}
+#======== Bangs
+layer
+{
+  name: "cls_Bangs"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Bangs"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Bangs"
+	top: "prob_Bangs"
+	name: "prob_Bangs"
+	type: "Softmax"
+}
+#=======cls_Big_Lips======
+layer
+{
+  name: "cls_Big_Lips"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Big_Lips"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Big_Lips"
+	top: "prob_Big_Lips"
+	name: "prob_Big_Lips"
+	type: "Softmax"
+}
+# ======= cls_Big_Nose =====
+layer
+{
+  name: "cls_Big_Nose"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Big_Nose"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Big_Nose"
+	top: "prob_Big_Nose"
+	name: "prob_Big_Nose"
+	type: "Softmax"
+}
+#======= Black_Hair
+layer
+{
+  name: "cls_Black_Hair"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Black_Hair"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Black_Hair"
+	top: "prob_Black_Hair"
+	name: "prob_Black_Hair"
+	type: "Softmax"
+}
+#===========cls_Blond_Hair 
+layer
+{
+  name: "cls_Blond_Hair"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Blond_Hair"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Blond_Hair"
+	top: "prob_Blond_Hair"
+	name: "prob_Blond_Hair"
+	type: "Softmax"
+}
+# =========== cls_Blurry
+layer
+{
+  name: "cls_Blurry"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Blurry"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+} 
+layer {
+	bottom: "cls_Blurry"
+	top: "prob_Blurry"
+	name: "prob_Blurry"
+	type: "Softmax"
+}
+#=========== Brown_Hair
+layer
+{
+  name: "cls_Brown_Hair"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Brown_Hair"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}  
+layer {
+	bottom: "cls_Brown_Hair"
+	top: "prob_Brown_Hair"
+	name: "prob_Brown_Hair"
+	type: "Softmax"
+}
+# =========Bushy_Eyebrows
+layer
+{
+  name: "cls_Bushy_Eyebrows"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Bushy_Eyebrows"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}  
+layer {
+	bottom: "cls_Bushy_Eyebrows"
+	top: "prob_Bushy_Eyebrows"
+	name: "prob_Bushy_Eyebrows"
+	type: "Softmax"
+}
+#===========cls_Chubby
+layer
+{
+  name: "cls_Chubby"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Chubby"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Chubby"
+	top: "prob_Chubby"
+	name: "prob_Chubby"
+	type: "Softmax"
+}
+#========== cls_Double_Chin
+layer
+{
+  name: "cls_Double_Chin"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Double_Chin"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+} 
+layer {
+	bottom: "cls_Double_Chin"
+	top: "prob_Double_Chin"
+	name: "prob_Double_Chin"
+	type: "Softmax"
+}
+#========== Eyeglasses
+layer
+{
+  name: "cls_Eyeglasses"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Eyeglasses"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Eyeglasses"
+	top: "prob_Eyeglasses"
+	name: "prob_Eyeglasses"
+	type: "Softmax"
+}
+# ================cls_Goatee
+layer
+{
+  name: "cls_Goatee"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Goatee"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+} 
+layer {
+	bottom: "cls_Goatee"
+	top: "prob_Goatee"
+	name: "prob_Goatee"
+	type: "Softmax"
+}
+# ===================Gray_Hair
+layer
+{
+  name: "cls_Gray_Hair"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Gray_Hair"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+} 
+layer {
+	bottom: "cls_Gray_Hair"
+	top: "prob_Gray_Hair"
+	name: "prob_Gray_Hair"
+	type: "Softmax"
+}
+#==========cls_Heavy_Makeup
+layer
+{
+  name: "cls_Heavy_Makeup"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Heavy_Makeup"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Heavy_Makeup"
+	top: "prob_Heavy_Makeup"
+	name: "prob_Heavy_Makeup"
+	type: "Softmax"
+}
+# ============ High_Cheekbones
+layer
+{
+  name: "cls_High_Cheekbones"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_High_Cheekbones"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_High_Cheekbones"
+	top: "prob_High_Cheekbones"
+	name: "prob_High_Cheekbones"
+	type: "Softmax"
+}
+# ============Male
+layer
+{
+  name: "cls_Male"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Male"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Male"
+	top: "prob_Male"
+	name: "prob_Male"
+	type: "Softmax"
+}
+#=========Mouth_Slightly_Open
+layer
+{
+  name: "cls_Mouth_Slightly_Open"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Mouth_Slightly_Open"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Mouth_Slightly_Open"
+	top: "prob_Mouth_Slightly_Open"
+	name: "prob_Mouth_Slightly_Open"
+	type: "Softmax"
+}
+#=========cls_Mustache
+layer
+{
+  name: "cls_Mustache"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Mustache"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Mustache"
+	top: "prob_Mustache"
+	name: "prob_Mustache"
+	type: "Softmax"
+}
+#=========cls_Narrow_Eyes
+layer
+{
+  name: "cls_Narrow_Eyes"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Narrow_Eyes"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Narrow_Eyes"
+	top: "prob_Narrow_Eyes"
+	name: "prob_Narrow_Eyes"
+	type: "Softmax"
+}
+#=========cls_No_Beard
+layer
+{
+  name: "cls_No_Beard"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_No_Beard"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_No_Beard"
+	top: "prob_No_Beard"
+	name: "prob_No_Beard"
+	type: "Softmax"
+}
+#=========cls_Oval_Face
+layer
+{
+  name: "cls_Oval_Face"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Oval_Face"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Oval_Face"
+	top: "prob_Oval_Face"
+	name: "prob_Oval_Face"
+	type: "Softmax"
+}
+#=========cls_Pale_Skin
+layer
+{
+  name: "cls_Pale_Skin"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Pale_Skin"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}  
+layer {
+	bottom: "cls_Pale_Skin"
+	top: "prob_Pale_Skin"
+	name: "prob_Pale_Skin"
+	type: "Softmax"
+}
+#=========cls_Pointy_Nose
+layer
+{
+  name: "cls_Pointy_Nose"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Pointy_Nose"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}  
+layer {
+	bottom: "cls_Pointy_Nose"
+	top: "prob_Pointy_Nose"
+	name: "prob_Pointy_Nose"
+	type: "Softmax"
+}
+#=========cls_Receding_Hairline
+layer
+{
+  name: "cls_Receding_Hairline"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Receding_Hairline"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}  
+layer {
+	bottom: "cls_Receding_Hairline"
+	top: "prob_Receding_Hairline"
+	name: "prob_Receding_Hairline"
+	type: "Softmax"
+}
+#=========cls_Rosy_Cheeks
+layer
+{
+  name: "cls_Rosy_Cheeks"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Rosy_Cheeks"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Rosy_Cheeks"
+	top: "prob_Rosy_Cheeks"
+	name: "prob_Rosy_Cheeks"
+	type: "Softmax"
+}
+#=========cls_Sideburns
+layer
+{
+  name: "cls_Sideburns"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Sideburns"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Sideburns"
+	top: "prob_Sideburns"
+	name: "prob_Sideburns"
+	type: "Softmax"
+}
+#=========cls_Smiling
+layer
+{
+  name: "cls_Smiling"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Smiling"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Smiling"
+	top: "prob_Smiling"
+	name: "prob_Smiling"
+	type: "Softmax"
+}
+#=========cls_Straight_Hair
+layer
+{
+  name: "cls_Straight_Hair"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Straight_Hair"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+} 
+layer {
+	bottom: "cls_Straight_Hair"
+	top: "prob_Straight_Hair"
+	name: "prob_Straight_Hair"
+	type: "Softmax"
+}
+#=========cls_Wavy_Hair
+layer
+{
+  name: "cls_Wavy_Hair"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Wavy_Hair"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+} 
+layer {
+	bottom: "cls_Wavy_Hair"
+	top: "prob_Wavy_Hair"
+	name: "prob_Wavy_Hair"
+	type: "Softmax"
+}
+#=========cls_Wearing_Earrings
+layer
+{
+  name: "cls_Wearing_Earrings"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Wearing_Earrings"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Wearing_Earrings"
+	top: "prob_Wearing_Earrings"
+	name: "prob_Wearing_Earrings"
+	type: "Softmax"
+}
+#=========cls_Wearing_Hat
+layer
+{
+  name: "cls_Wearing_Hat"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Wearing_Hat"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+} 
+layer {
+	bottom: "cls_Wearing_Hat"
+	top: "prob_Wearing_Hat"
+	name: "prob_Wearing_Hat"
+	type: "Softmax"
+}
+#=========cls_Wearing_Lipstick
+layer
+{
+  name: "cls_Wearing_Lipstick"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Wearing_Lipstick"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Wearing_Lipstick"
+	top: "prob_Wearing_Lipstick"
+	name: "prob_Wearing_Lipstick"
+	type: "Softmax"
+}
+#=========cls_Wearing_Necklace
+layer
+{
+  name: "cls_Wearing_Necklace"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Wearing_Necklace"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Wearing_Necklace"
+	top: "prob_Wearing_Necklace"
+	name: "prob_Wearing_Necklace"
+	type: "Softmax"
+}
+#=========cls_Wearing_Necktie
+layer
+{
+  name: "cls_Wearing_Necktie"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Wearing_Necktie"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Wearing_Necktie"
+	top: "prob_Wearing_Necktie"
+	name: "prob_Wearing_Necktie"
+	type: "Softmax"
+}
+#=========cls_Young
+layer
+{
+  name: "cls_Young"
+  type: "InnerProduct"
+  bottom: "fc-512"
+  top: "cls_Young"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	bottom: "cls_Young"
+	top: "prob_Young"
+	name: "prob_Young"
+	type: "Softmax"
+}
+
